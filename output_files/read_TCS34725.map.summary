@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Fri Jul 25 22:48:34 2025
+Quartus Prime Version : 21.1.0 Build 842 10/21/2021 SJ Lite Edition
+Revision Name : read_TCS34725
+Top-level Entity Name : read_TCS34725
+Family : Cyclone 10 LP
+Total logic elements : 2,924
+    Total combinational functions : 1,110
+    Dedicated logic registers : 2,468
+Total registers : 2468
+Total pins : 70
+Total virtual pins : 0
+Total memory bits : 164,864
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0

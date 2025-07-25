@@ -1,0 +1,8 @@
+module i2c_controller (
+input wire clk,rst, 
+input wire [7:0] data_in,
+input wire [6:0] addr,
+input wire enable,
+input wire rw, // read or write
+
+)

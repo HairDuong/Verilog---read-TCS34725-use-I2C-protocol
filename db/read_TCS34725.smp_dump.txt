@@ -1,0 +1,12 @@
+
+State Machine - |read_TCS34725|i2c_controller:i2c|state
+Name state.READ_ACK2 state.READ_DATA state.WRITE_ACK state.WRITE_DATA state.READ_ACK state.ADDRESS state.START state.IDLE state.STOP 
+state.IDLE 0 0 0 0 0 0 0 0 0 
+state.START 0 0 0 0 0 0 1 1 0 
+state.ADDRESS 0 0 0 0 0 1 0 1 0 
+state.READ_ACK 0 0 0 0 1 0 0 1 0 
+state.WRITE_DATA 0 0 0 1 0 0 0 1 0 
+state.WRITE_ACK 0 0 1 0 0 0 0 1 0 
+state.READ_DATA 0 1 0 0 0 0 0 1 0 
+state.READ_ACK2 1 0 0 0 0 0 0 1 0 
+state.STOP 0 0 0 0 0 0 0 1 1 
