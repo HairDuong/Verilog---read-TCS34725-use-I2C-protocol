@@ -1,5 +1,24 @@
 
-State Machine - |read_TCS34725|i2c_controller:i2c|state
+State Machine - |read_TCS34725|state
+Name state.S_READ_BLUE_L state.S_READ_GREEN_H state.S_READ_GREEN_L state.S_READ_RED_H state.S_READ_RED_L state.S_READ_CLR_H state.S_READ_CLR_L state.S_SEND_CMD_READ state.S_WRITE_WTIME2 state.S_WRITE_WTIME1 state.S_WRITE_ATIME2 state.S_WRITE_ATIME1 state.S_WRITE_ENABLE2 state.S_WRITE_ENABLE1 state.S_IDLE state.S_READ_BLUE_H 
+state.S_IDLE 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+state.S_WRITE_ENABLE1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 
+state.S_WRITE_ENABLE2 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 0 
+state.S_WRITE_ATIME1 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 0 
+state.S_WRITE_ATIME2 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 0 
+state.S_WRITE_WTIME1 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 0 
+state.S_WRITE_WTIME2 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0 
+state.S_SEND_CMD_READ 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 
+state.S_READ_CLR_L 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 
+state.S_READ_CLR_H 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 0 
+state.S_READ_RED_L 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 0 
+state.S_READ_RED_H 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 0 
+state.S_READ_GREEN_L 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0 
+state.S_READ_GREEN_H 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 0 
+state.S_READ_BLUE_L 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 
+state.S_READ_BLUE_H 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+
+State Machine - |read_TCS34725|i2c_controller:i2c_inst|state
 Name state.READ_ACK2 state.READ_DATA state.WRITE_ACK state.WRITE_DATA state.READ_ACK state.ADDRESS state.START state.IDLE state.STOP 
 state.IDLE 0 0 0 0 0 0 0 0 0 
 state.START 0 0 0 0 0 0 1 1 0 

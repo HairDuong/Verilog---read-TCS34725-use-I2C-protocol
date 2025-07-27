@@ -1,137 +1,200 @@
 module read_TCS34725 (
     input wire clk,
     input wire rst,
+    output wire i2c_scl,
     inout wire i2c_sda,
-    inout wire i2c_scl,
     output reg [15:0] red,
     output reg [15:0] green,
-    output reg [15:0] blue
+    output reg [15:0] blue,
+    output reg [15:0] clear
 );
 
-    // FSM states
-    localparam S_INIT_ENABLE = 0,
-               S_INIT_WRITE  = 1,
-               S_INIT_WAIT   = 2,
-               S_SET_CMD     = 3,
-               S_CMD_WAIT    = 4,
-               S_READ_START  = 5,
-               S_READ_WAIT   = 6,
-               S_UPDATE      = 7;
+    // I2C signals
+    reg [6:0] i2c_addr;
+    reg [7:0] i2c_data_in;
+    reg i2c_enable;
+    reg i2c_rw;
+    wire [7:0] i2c_data_out;
+    wire i2c_ready;
 
-    reg [3:0] state = S_INIT_ENABLE;
-    reg [2:0] byte_count = 0;
+    // FSM state
+// Định nghĩa các trạng thái bằng parameter
+parameter S_IDLE           = 5'd0,
+          S_WRITE_ENABLE1  = 5'd1,
+          S_WRITE_ENABLE2  = 5'd2,
+          S_WRITE_ATIME1   = 5'd3,
+          S_WRITE_ATIME2   = 5'd4,
+          S_WRITE_WTIME1   = 5'd5,
+          S_WRITE_WTIME2   = 5'd6,
+          S_SEND_CMD_READ  = 5'd7,
+          S_READ_WAIT      = 5'd8,
+          S_READ_CLR_L     = 5'd9,
+          S_READ_CLR_H     = 5'd10,
+          S_READ_RED_L     = 5'd11,
+          S_READ_RED_H     = 5'd12,
+          S_READ_GREEN_L   = 5'd13,
+          S_READ_GREEN_H   = 5'd14,
+          S_READ_BLUE_L    = 5'd15,
+          S_READ_BLUE_H    = 5'd16;
 
-    reg [6:0] dev_addr = 7'h29;  // I2C address of TCS34725
-    reg [7:0] data_in_i2c = 0;
-    reg rw_i2c = 0;              // 0 = write, 1 = read
-    reg enable_i2c = 0;
-    wire [7:0] data_out_i2c;
-    wire ready_i2c;
+// Biến trạng thái
+reg [4:0] state;
 
-    reg [7:0] rgb_data[0:5];     // RED_L, RED_H, GREEN_L, GREEN_H, BLUE_L, BLUE_H
 
+    // I2C controller instance
     i2c_controller i2c_inst (
         .clk(clk),
         .rst(rst),
-        .addr(dev_addr),
-        .data_in(data_in_i2c),
-        .enable(enable_i2c),
-        .rw(rw_i2c),
-        .data_out(data_out_i2c),
-        .ready(ready_i2c),
-        .i2c_sda(i2c_sda),
-        .i2c_scl(i2c_scl)
+        .addr(i2c_addr),
+        .data_in(i2c_data_in),
+        .enable(i2c_enable),
+        .rw(i2c_rw),
+        .data_out(i2c_data_out),
+        .ready(i2c_ready),
+        .i2c_scl(i2c_scl),
+        .i2c_sda(i2c_sda)
     );
 
+    // FSM
     always @(posedge clk or negedge rst) begin
-        if (!rst) begin
-            state <= S_INIT_ENABLE;
-            enable_i2c <= 0;
-            rw_i2c <= 0;
-            byte_count <= 0;
-            red <= 0;
-            green <= 0;
-            blue <= 0;
+        if (~rst) begin
+            state <= S_IDLE;
+            i2c_enable <= 0;
+            i2c_rw <= 0;
+            i2c_addr <= 7'h29; // 7-bit I2C address
+            clear <= 0; red <= 0; green <= 0; blue <= 0;
         end else begin
             case (state)
-
-                // Step 1: Write to ENABLE register
-                S_INIT_ENABLE: begin
-                    if (ready_i2c) begin
-                        data_in_i2c <= 8'h80; // CMD | ADDR = ENABLE (0x00)
-                        rw_i2c <= 0;
-                        enable_i2c <= 1;
-                        state <= S_INIT_WRITE;
+                S_IDLE: begin
+                    if (i2c_ready) begin
+                        i2c_data_in <= 8'h80; // CMD | 0x00 (ENABLE reg)
+                        i2c_rw <= 0;
+                        i2c_enable <= 1;
+                        state <= S_WRITE_ENABLE1;
                     end
                 end
-
-                S_INIT_WRITE: begin
-                    enable_i2c <= 0;
-                    if (ready_i2c) begin
-                        data_in_i2c <= 8'h03; // PON + AEN
-                        enable_i2c <= 1;
-                        state <= S_INIT_WAIT;
+                S_WRITE_ENABLE1: begin
+                    i2c_enable <= 0;
+                    if (i2c_ready) begin
+                        i2c_data_in <= 8'h0B; // PON | AEN | WEN
+                        i2c_enable <= 1;
+                        state <= S_WRITE_ENABLE2;
                     end
                 end
-
-                S_INIT_WAIT: begin
-                    enable_i2c <= 0;
-                    if (ready_i2c) begin
-                        state <= S_SET_CMD;
+                S_WRITE_ENABLE2: begin
+                    i2c_enable <= 0;
+                    if (i2c_ready) begin
+                        i2c_data_in <= 8'h81; // CMD | 0x01 (ATIME)
+                        i2c_enable <= 1;
+                        state <= S_WRITE_ATIME1;
                     end
                 end
-
-                // Step 2: Set Command Register for auto-increment from 0x14
-                S_SET_CMD: begin
-                    if (ready_i2c) begin
-                        data_in_i2c <= 8'hB4; // CMD(1) | TYPE(01) | ADDR(0x14) = 0x80 | 0x20 | 0x14
-                        rw_i2c <= 0;
-                        enable_i2c <= 1;
-                        state <= S_CMD_WAIT;
+                S_WRITE_ATIME1: begin
+                    i2c_enable <= 0;
+                    if (i2c_ready) begin
+                        i2c_data_in <= 8'hFF; // ATIME = 256 - 1 = max
+                        i2c_enable <= 1;
+                        state <= S_WRITE_ATIME2;
                     end
                 end
-
-                S_CMD_WAIT: begin
-                    enable_i2c <= 0;
-                    if (ready_i2c) begin
-                        rw_i2c <= 1;          // Switch to read mode
-                        enable_i2c <= 1;
-                        byte_count <= 0;
-                        state <= S_READ_START;
+                S_WRITE_ATIME2: begin
+                    i2c_enable <= 0;
+                    if (i2c_ready) begin
+                        i2c_data_in <= 8'h83; // CMD | 0x03 (WTIME)
+                        i2c_enable <= 1;
+                        state <= S_WRITE_WTIME1;
                     end
                 end
-
-                // Step 3: Read 6 bytes sequentially
-                S_READ_START: begin
-                    enable_i2c <= 0;
-                    if (ready_i2c) begin
-                        enable_i2c <= 1;     // Start reading first byte
-                        state <= S_READ_WAIT;
+                S_WRITE_WTIME1: begin
+                    i2c_enable <= 0;
+                    if (i2c_ready) begin
+                        i2c_data_in <= 8'hFF; // WTIME = max
+                        i2c_enable <= 1;
+                        state <= S_WRITE_WTIME2;
                     end
                 end
-
-                S_READ_WAIT: begin
-                    enable_i2c <= 0;
-                    if (ready_i2c) begin
-                        rgb_data[byte_count] <= data_out_i2c;
-                        byte_count <= byte_count + 1;
-                        if (byte_count < 5) begin
-                            enable_i2c <= 1; // Read next byte
-                        end else begin
-                            state <= S_UPDATE;
-                        end
+                S_WRITE_WTIME2: begin
+                    i2c_enable <= 0;
+                    if (i2c_ready) begin
+                        i2c_data_in <= 8'h94; // CMD | Auto-Inc | 0x14
+                        i2c_rw <= 0;
+                        i2c_enable <= 1;
+                        state <= S_SEND_CMD_READ;
                     end
                 end
-
-                // Step 4: Update RGB values
-                S_UPDATE: begin
-                    red   <= {rgb_data[1], rgb_data[0]};
-                    green <= {rgb_data[3], rgb_data[2]};
-                    blue  <= {rgb_data[5], rgb_data[4]};
-                    state <= S_SET_CMD; // Loop back to keep reading
+                S_SEND_CMD_READ: begin
+                    i2c_enable <= 0;
+                    if (i2c_ready) begin
+                        i2c_rw <= 1; // switch to read mode
+                        i2c_enable <= 1;
+                        state <= S_READ_CLR_L;
+                    end
+                end
+                S_READ_CLR_L: begin
+                    i2c_enable <= 0;
+                    if (i2c_ready) begin
+                        clear[7:0] <= i2c_data_out;
+                        i2c_enable <= 1;
+                        state <= S_READ_CLR_H;
+                    end
+                end
+                S_READ_CLR_H: begin
+                    i2c_enable <= 0;
+                    if (i2c_ready) begin
+                        clear[15:8] <= i2c_data_out;
+                        i2c_enable <= 1;
+                        state <= S_READ_RED_L;
+                    end
+                end
+                S_READ_RED_L: begin
+                    i2c_enable <= 0;
+                    if (i2c_ready) begin
+                        red[7:0] <= i2c_data_out;
+                        i2c_enable <= 1;
+                        state <= S_READ_RED_H;
+                    end
+                end
+                S_READ_RED_H: begin
+                    i2c_enable <= 0;
+                    if (i2c_ready) begin
+                        red[15:8] <= i2c_data_out;
+                        i2c_enable <= 1;
+                        state <= S_READ_GREEN_L;
+                    end
+                end
+                S_READ_GREEN_L: begin
+                    i2c_enable <= 0;
+                    if (i2c_ready) begin
+                        green[7:0] <= i2c_data_out;
+                        i2c_enable <= 1;
+                        state <= S_READ_GREEN_H;
+                    end
+                end
+                S_READ_GREEN_H: begin
+                    i2c_enable <= 0;
+                    if (i2c_ready) begin
+                        green[15:8] <= i2c_data_out;
+                        i2c_enable <= 1;
+                        state <= S_READ_BLUE_L;
+                    end
+                end
+                S_READ_BLUE_L: begin
+                    i2c_enable <= 0;
+                    if (i2c_ready) begin
+                        blue[7:0] <= i2c_data_out;
+                        i2c_enable <= 1;
+                        state <= S_READ_BLUE_H;
+                    end
+                end
+                S_READ_BLUE_H: begin
+                    i2c_enable <= 0;
+                    if (i2c_ready) begin
+                        blue[15:8] <= i2c_data_out;
+                        i2c_enable <= 0;
+                        state <= S_WRITE_ENABLE1; // quay lại đọc tiếp
+                    end
                 end
             endcase
         end
     end
-
 endmodule
