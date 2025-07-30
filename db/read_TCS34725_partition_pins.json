@@ -36,6 +36,38 @@
 					"strict" : false
 				},
 				{
+					"name" : "red[8]",
+					"strict" : false
+				},
+				{
+					"name" : "red[9]",
+					"strict" : false
+				},
+				{
+					"name" : "red[10]",
+					"strict" : false
+				},
+				{
+					"name" : "red[11]",
+					"strict" : false
+				},
+				{
+					"name" : "red[12]",
+					"strict" : false
+				},
+				{
+					"name" : "red[13]",
+					"strict" : false
+				},
+				{
+					"name" : "red[14]",
+					"strict" : false
+				},
+				{
+					"name" : "red[15]",
+					"strict" : false
+				},
+				{
 					"name" : "green[0]",
 					"strict" : false
 				},
@@ -65,6 +97,38 @@
 				},
 				{
 					"name" : "green[7]",
+					"strict" : false
+				},
+				{
+					"name" : "green[8]",
+					"strict" : false
+				},
+				{
+					"name" : "green[9]",
+					"strict" : false
+				},
+				{
+					"name" : "green[10]",
+					"strict" : false
+				},
+				{
+					"name" : "green[11]",
+					"strict" : false
+				},
+				{
+					"name" : "green[12]",
+					"strict" : false
+				},
+				{
+					"name" : "green[13]",
+					"strict" : false
+				},
+				{
+					"name" : "green[14]",
+					"strict" : false
+				},
+				{
+					"name" : "green[15]",
 					"strict" : false
 				},
 				{
@@ -100,6 +164,38 @@
 					"strict" : false
 				},
 				{
+					"name" : "blue[8]",
+					"strict" : false
+				},
+				{
+					"name" : "blue[9]",
+					"strict" : false
+				},
+				{
+					"name" : "blue[10]",
+					"strict" : false
+				},
+				{
+					"name" : "blue[11]",
+					"strict" : false
+				},
+				{
+					"name" : "blue[12]",
+					"strict" : false
+				},
+				{
+					"name" : "blue[13]",
+					"strict" : false
+				},
+				{
+					"name" : "blue[14]",
+					"strict" : false
+				},
+				{
+					"name" : "blue[15]",
+					"strict" : false
+				},
+				{
 					"name" : "clear[0]",
 					"strict" : false
 				},
@@ -129,6 +225,58 @@
 				},
 				{
 					"name" : "clear[7]",
+					"strict" : false
+				},
+				{
+					"name" : "clear[8]",
+					"strict" : false
+				},
+				{
+					"name" : "clear[9]",
+					"strict" : false
+				},
+				{
+					"name" : "clear[10]",
+					"strict" : false
+				},
+				{
+					"name" : "clear[11]",
+					"strict" : false
+				},
+				{
+					"name" : "clear[12]",
+					"strict" : false
+				},
+				{
+					"name" : "clear[13]",
+					"strict" : false
+				},
+				{
+					"name" : "clear[14]",
+					"strict" : false
+				},
+				{
+					"name" : "clear[15]",
+					"strict" : false
+				},
+				{
+					"name" : "data_valid",
+					"strict" : false
+				},
+				{
+					"name" : "is_red",
+					"strict" : false
+				},
+				{
+					"name" : "is_green",
+					"strict" : false
+				},
+				{
+					"name" : "is_blue",
+					"strict" : false
+				},
+				{
+					"name" : "is_unknown",
 					"strict" : false
 				},
 				{

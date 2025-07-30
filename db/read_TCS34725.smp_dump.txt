@@ -1,16 +1,21 @@
 
 State Machine - |read_TCS34725|state
-Name state.S_DONE state.S_READ_BLUE_H state.S_READ_GREEN_H state.S_READ_RED_H state.S_READ_CLEAR_H state.S_WAIT_INTEGRATION state.S_WRITE_ATIME state.S_WAIT_PON state.S_WRITE_ENABLE state.S_IDLE 
-state.S_IDLE 0 0 0 0 0 0 0 0 0 0 
-state.S_WRITE_ENABLE 0 0 0 0 0 0 0 0 1 1 
-state.S_WAIT_PON 0 0 0 0 0 0 0 1 0 1 
-state.S_WRITE_ATIME 0 0 0 0 0 0 1 0 0 1 
-state.S_WAIT_INTEGRATION 0 0 0 0 0 1 0 0 0 1 
-state.S_READ_CLEAR_H 0 0 0 0 1 0 0 0 0 1 
-state.S_READ_RED_H 0 0 0 1 0 0 0 0 0 1 
-state.S_READ_GREEN_H 0 0 1 0 0 0 0 0 0 1 
-state.S_READ_BLUE_H 0 1 0 0 0 0 0 0 0 1 
-state.S_DONE 1 0 0 0 0 0 0 0 0 1 
+Name state.S_DONE state.S_UPDATE_OUTPUT state.S_READ_BLUE_H state.S_READ_BLUE_L state.S_READ_GREEN_H state.S_READ_GREEN_L state.S_READ_RED_H state.S_READ_RED_L state.S_READ_CLEAR_H state.S_READ_CLEAR_L state.S_WAIT_INTEGRATION state.S_WRITE_ATIME state.S_WAIT_PON state.S_WRITE_ENABLE state.S_IDLE 
+state.S_IDLE 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+state.S_WRITE_ENABLE 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+state.S_WAIT_PON 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+state.S_WRITE_ATIME 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+state.S_WAIT_INTEGRATION 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+state.S_READ_CLEAR_L 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+state.S_READ_CLEAR_H 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+state.S_READ_RED_L 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+state.S_READ_RED_H 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+state.S_READ_GREEN_L 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+state.S_READ_GREEN_H 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+state.S_READ_BLUE_L 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+state.S_READ_BLUE_H 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+state.S_UPDATE_OUTPUT 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.S_DONE 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
 
 State Machine - |read_TCS34725|i2c_controller:i2c_master_inst|process_counter
 Name process_counter.11 process_counter.10 process_counter.01 process_counter.00 

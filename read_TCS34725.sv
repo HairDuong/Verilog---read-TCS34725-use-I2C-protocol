@@ -3,10 +3,17 @@ module read_TCS34725 (
     input wire rst,          // Active low reset
     inout wire i2c_scl,      // I2C clock
     inout wire i2c_sda,      // I2C data
-    output reg [7:0] red,    // Red high byte only
-    output reg [7:0] green,  // Green high byte only
-    output reg [7:0] blue,   // Blue high byte only
-    output reg [7:0] clear   // Clear high byte only
+    output reg [15:0] red,    // Red 16-bit data
+    output reg [15:0] green,  // Green 16-bit data
+    output reg [15:0] blue,   // Blue 16-bit data
+    output reg [15:0] clear,  // Clear 16-bit data
+    output reg data_valid ,    // Data valid strobe
+	 
+	 // Color detection outputs
+    output reg is_red,      // Red detected
+    output reg is_green,    // Green detected
+    output reg is_blue,     // Blue detected
+    output reg is_unknown   // Unknown color
 );
 
     // I2C interface signals
@@ -20,6 +27,12 @@ module read_TCS34725 (
     reg [23:0] delay_counter;
     reg [15:0] i2c_divider = 16'd30; // 100kHz at 12MHz
 
+    // Temporary storage for 16-bit values
+    reg [7:0] clear_l, clear_h;
+    reg [7:0] red_l, red_h;
+    reg [7:0] green_l, green_h;
+    reg [7:0] blue_l, blue_h;
+
     // FSM states
     typedef enum logic [3:0] {
         S_IDLE,
@@ -27,10 +40,15 @@ module read_TCS34725 (
         S_WAIT_PON,
         S_WRITE_ATIME,
         S_WAIT_INTEGRATION,
+        S_READ_CLEAR_L,
         S_READ_CLEAR_H,
+        S_READ_RED_L,
         S_READ_RED_H,
+        S_READ_GREEN_L,
         S_READ_GREEN_H,
+        S_READ_BLUE_L,
         S_READ_BLUE_H,
+        S_UPDATE_OUTPUT,
         S_DONE
     } state_t;
     state_t state;
@@ -57,6 +75,28 @@ module read_TCS34725 (
         .external_serial_data(i2c_sda)
     );
 
+	wire color_is_red, color_is_green, color_is_blue, color_is_unknown;
+
+    // Instantiate color detector
+    color_detector color_detect (
+        .clk(clk),
+        .rst(rst),
+        .clear(clear),
+        .red(red),
+        .green(green),
+        .blue(blue),
+        .data_valid(data_valid),
+        .is_blue(color_is_blue),
+        .is_green(color_is_green),
+        .is_red(color_is_red),
+        .is_unknown(color_is_unknown)
+    );
+	 // Gán output
+    assign is_red = color_is_red;
+    assign is_green = color_is_green;
+    assign is_blue = color_is_blue;
+    assign is_unknown = color_is_unknown;
+
     always @(posedge clk or negedge rst) begin
         if (~rst) begin
             state <= S_IDLE;
@@ -65,9 +105,16 @@ module read_TCS34725 (
             green <= 0;
             blue <= 0;
             clear <= 0;
+            data_valid <= 0;
             delay_counter <= 0;
+            // Reset temporary registers
+            clear_l <= 0; clear_h <= 0;
+            red_l <= 0; red_h <= 0;
+            green_l <= 0; green_h <= 0;
+            blue_l <= 0; blue_h <= 0;
         end else begin
             enable <= 0; // Default disable
+            data_valid <= 0; // Default no valid data
             
             case (state)
                 S_IDLE: begin
@@ -112,8 +159,20 @@ module read_TCS34725 (
                     if (delay_counter > 0) begin
                         delay_counter <= delay_counter - 1;
                     end else if (!busy) begin
+                        // Start reading sequence with Clear Low Byte
+                        register_address <= 8'h94; // CDATAL reg (0x14 | 0x80)
+                        read_write <= 1;
+                        enable <= 1;
+                        state <= S_READ_CLEAR_L;
+                    end
+                end
+                
+                S_READ_CLEAR_L: begin
+                    if (!busy && !enable) begin
+                        clear_l <= miso_data;
+                        
                         // Read Clear High Byte
-                        register_address <= 8'h94; // CDATAH reg (0x15 | 0x80)
+                        register_address <= 8'h95; // CDATAH reg (0x15 | 0x80)
                         read_write <= 1;
                         enable <= 1;
                         state <= S_READ_CLEAR_H;
@@ -122,10 +181,22 @@ module read_TCS34725 (
                 
                 S_READ_CLEAR_H: begin
                     if (!busy && !enable) begin
-                        clear <= miso_data;
+                        clear_h <= miso_data;
+                        
+                        // Read Red Low Byte
+                        register_address <= 8'h96; // RDATAL reg (0x16 | 0x80)
+                        read_write <= 1;
+                        enable <= 1;
+                        state <= S_READ_RED_L;
+                    end
+                end
+                
+                S_READ_RED_L: begin
+                    if (!busy && !enable) begin
+                        red_l <= miso_data;
                         
                         // Read Red High Byte
-                        register_address <= 8'h96; // RDATAH reg (0x17 | 0x80)
+                        register_address <= 8'h97; // RDATAH reg (0x17 | 0x80)
                         read_write <= 1;
                         enable <= 1;
                         state <= S_READ_RED_H;
@@ -134,10 +205,22 @@ module read_TCS34725 (
                 
                 S_READ_RED_H: begin
                     if (!busy && !enable) begin
-                        red <= miso_data;
+                        red_h <= miso_data;
+                        
+                        // Read Green Low Byte
+                        register_address <= 8'h98; // GDATAL reg (0x18 | 0x80)
+                        read_write <= 1;
+                        enable <= 1;
+                        state <= S_READ_GREEN_L;
+                    end
+                end
+                
+                S_READ_GREEN_L: begin
+                    if (!busy && !enable) begin
+                        green_l <= miso_data;
                         
                         // Read Green High Byte
-                        register_address <= 8'h98; // GDATAH reg (0x19 | 0x80)
+                        register_address <= 8'h99; // GDATAH reg (0x19 | 0x80)
                         read_write <= 1;
                         enable <= 1;
                         state <= S_READ_GREEN_H;
@@ -146,10 +229,22 @@ module read_TCS34725 (
                 
                 S_READ_GREEN_H: begin
                     if (!busy && !enable) begin
-                        green <= miso_data;
+                        green_h <= miso_data;
+                        
+                        // Read Blue Low Byte
+                        register_address <= 8'h9A; // BDATAL reg (0x1A | 0x80)
+                        read_write <= 1;
+                        enable <= 1;
+                        state <= S_READ_BLUE_L;
+                    end
+                end
+                
+                S_READ_BLUE_L: begin
+                    if (!busy && !enable) begin
+                        blue_l <= miso_data;
                         
                         // Read Blue High Byte
-                        register_address <= 8'h9A; // BDATAH reg (0x1B | 0x80)
+                        register_address <= 8'h9B; // BDATAH reg (0x1B | 0x80)
                         read_write <= 1;
                         enable <= 1;
                         state <= S_READ_BLUE_H;
@@ -158,9 +253,19 @@ module read_TCS34725 (
                 
                 S_READ_BLUE_H: begin
                     if (!busy && !enable) begin
-                        blue <= miso_data;
-                        state <= S_DONE;
+                        blue_h <= miso_data;
+                        state <= S_UPDATE_OUTPUT;
                     end
+                end
+                
+                S_UPDATE_OUTPUT: begin
+                    // Combine low and high bytes
+                    clear <= {clear_h, clear_l};
+                    red <= {red_h, red_l};
+                    green <= {green_h, green_l};
+                    blue <= {blue_h, blue_l};
+                    data_valid <= 1; // Pulse valid signal
+                    state <= S_DONE;
                 end
                 
                 S_DONE: begin
