@@ -4,10 +4,6 @@
 			"name" : "Top",
 			"pins" : [
 				{
-					"name" : "i2c_scl",
-					"strict" : false
-				},
-				{
 					"name" : "red[0]",
 					"strict" : false
 				},
@@ -37,38 +33,6 @@
 				},
 				{
 					"name" : "red[7]",
-					"strict" : false
-				},
-				{
-					"name" : "red[8]",
-					"strict" : false
-				},
-				{
-					"name" : "red[9]",
-					"strict" : false
-				},
-				{
-					"name" : "red[10]",
-					"strict" : false
-				},
-				{
-					"name" : "red[11]",
-					"strict" : false
-				},
-				{
-					"name" : "red[12]",
-					"strict" : false
-				},
-				{
-					"name" : "red[13]",
-					"strict" : false
-				},
-				{
-					"name" : "red[14]",
-					"strict" : false
-				},
-				{
-					"name" : "red[15]",
 					"strict" : false
 				},
 				{
@@ -104,38 +68,6 @@
 					"strict" : false
 				},
 				{
-					"name" : "green[8]",
-					"strict" : false
-				},
-				{
-					"name" : "green[9]",
-					"strict" : false
-				},
-				{
-					"name" : "green[10]",
-					"strict" : false
-				},
-				{
-					"name" : "green[11]",
-					"strict" : false
-				},
-				{
-					"name" : "green[12]",
-					"strict" : false
-				},
-				{
-					"name" : "green[13]",
-					"strict" : false
-				},
-				{
-					"name" : "green[14]",
-					"strict" : false
-				},
-				{
-					"name" : "green[15]",
-					"strict" : false
-				},
-				{
 					"name" : "blue[0]",
 					"strict" : false
 				},
@@ -165,38 +97,6 @@
 				},
 				{
 					"name" : "blue[7]",
-					"strict" : false
-				},
-				{
-					"name" : "blue[8]",
-					"strict" : false
-				},
-				{
-					"name" : "blue[9]",
-					"strict" : false
-				},
-				{
-					"name" : "blue[10]",
-					"strict" : false
-				},
-				{
-					"name" : "blue[11]",
-					"strict" : false
-				},
-				{
-					"name" : "blue[12]",
-					"strict" : false
-				},
-				{
-					"name" : "blue[13]",
-					"strict" : false
-				},
-				{
-					"name" : "blue[14]",
-					"strict" : false
-				},
-				{
-					"name" : "blue[15]",
 					"strict" : false
 				},
 				{
@@ -232,35 +132,7 @@
 					"strict" : false
 				},
 				{
-					"name" : "clear[8]",
-					"strict" : false
-				},
-				{
-					"name" : "clear[9]",
-					"strict" : false
-				},
-				{
-					"name" : "clear[10]",
-					"strict" : false
-				},
-				{
-					"name" : "clear[11]",
-					"strict" : false
-				},
-				{
-					"name" : "clear[12]",
-					"strict" : false
-				},
-				{
-					"name" : "clear[13]",
-					"strict" : false
-				},
-				{
-					"name" : "clear[14]",
-					"strict" : false
-				},
-				{
-					"name" : "clear[15]",
+					"name" : "i2c_scl",
 					"strict" : false
 				},
 				{
@@ -268,11 +140,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "rst",
+					"name" : "clk",
 					"strict" : false
 				},
 				{
-					"name" : "clk",
+					"name" : "rst",
 					"strict" : false
 				},
 				{

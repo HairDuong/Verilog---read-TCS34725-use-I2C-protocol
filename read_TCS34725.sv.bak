@@ -1,0 +1,150 @@
+module read_TCS34725 (
+    input wire clk,
+    input wire rst,
+    output wire i2c_scl,
+    inout wire i2c_sda,
+    output reg [15:0] red,
+    output reg [15:0] green,
+    output reg [15:0] blue,
+    output reg [15:0] clear
+);
+
+    // I2C master interface signals
+    reg enable;
+    reg read_write; // 0 = write, 1 = read
+    reg [6:0] device_address = 7'h29; // TCS34725 I2C address
+    reg [15:0] register_address;
+    reg [7:0] mosi_data;
+    wire [7:0] miso_data;
+    wire busy;
+
+    // FSM state
+    typedef enum logic [4:0] {
+        S_IDLE,
+        S_WRITE_ENABLE,
+        S_WRITE_ATIME,
+        S_WRITE_WTIME,
+        S_SEND_CMD_READ,
+        S_READ_CLR_L,
+        S_READ_CLR_H,
+        S_READ_RED_L,
+        S_READ_RED_H,
+        S_READ_GREEN_L,
+        S_READ_GREEN_H,
+        S_READ_BLUE_L,
+        S_READ_BLUE_H
+    } state_t;
+    state_t state;
+
+    // Instantiate i2c_master
+    i2c_controller #(
+        .NUMBER_OF_DATA_BYTES(1),
+        .NUMBER_OF_REGISTER_BYTES(1),
+        .ADDRESS_WIDTH(7),
+        .CHECK_FOR_CLOCK_STRETCHING(1),
+        .CLOCK_STRETCHING_MAX_COUNT(1000)
+    ) i2c_master_inst (
+        .clk(clk),
+        .reset_n(rst),
+        .enable(enable),
+        .read_write(read_write),
+        .device_address(device_address),
+        .register_address(register_address),
+        .mosi_data(mosi_data),
+        .miso_data(miso_data),
+        .busy(busy),
+        .external_serial_clock(i2c_scl),
+        .external_serial_data(i2c_sda)
+    );
+
+    always @(posedge clk or negedge rst) begin
+        if (~rst) begin
+            state <= S_IDLE;
+            enable <= 0;
+            red <= 0; green <= 0; blue <= 0; clear <= 0;
+        end else begin
+            enable <= 0;
+            case (state)
+                S_IDLE: if (!busy) begin
+                    register_address <= 8'h80; // ENABLE
+                    mosi_data <= 8'h0B; // PON|AEN|WEN
+                    read_write <= 0;
+                    enable <= 1;
+                    state <= S_WRITE_ATIME;
+                end
+
+                S_WRITE_ATIME: if (!busy) begin
+                    register_address <= 8'h81;
+                    mosi_data <= 8'hFF; // ATIME = max
+                    read_write <= 0;
+                    enable <= 1;
+                    state <= S_WRITE_WTIME;
+                end
+
+                S_WRITE_WTIME: if (!busy) begin
+                    register_address <= 8'h83;
+                    mosi_data <= 8'hFF;
+                    read_write <= 0;
+                    enable <= 1;
+                    state <= S_SEND_CMD_READ;
+                end
+
+                S_SEND_CMD_READ: if (!busy) begin
+                    register_address <= 8'h94; // Auto-increment | 0x14
+                    read_write <= 1;
+                    enable <= 1;
+                    state <= S_READ_CLR_L;
+                end
+
+                S_READ_CLR_L: if (!busy) begin
+                    clear[7:0] <= miso_data;
+                    enable <= 1;
+                    state <= S_READ_CLR_H;
+                end
+
+                S_READ_CLR_H: if (!busy) begin
+                    clear[15:8] <= miso_data;
+                    enable <= 1;
+                    state <= S_READ_RED_L;
+                end
+
+                S_READ_RED_L: if (!busy) begin
+                    red[7:0] <= miso_data;
+                    enable <= 1;
+                    state <= S_READ_RED_H;
+                end
+
+                S_READ_RED_H: if (!busy) begin
+                    red[15:8] <= miso_data;
+                    enable <= 1;
+                    state <= S_READ_GREEN_L;
+                end
+
+                S_READ_GREEN_L: if (!busy) begin
+                    green[7:0] <= miso_data;
+                    enable <= 1;
+                    state <= S_READ_GREEN_H;
+                end
+
+                S_READ_GREEN_H: if (!busy) begin
+                    green[15:8] <= miso_data;
+                    enable <= 1;
+                    state <= S_READ_BLUE_L;
+                end
+
+                S_READ_BLUE_L: if (!busy) begin
+                    blue[7:0] <= miso_data;
+                    enable <= 1;
+                    state <= S_READ_BLUE_H;
+                end
+
+                S_READ_BLUE_H: if (!busy) begin
+                    blue[15:8] <= miso_data;
+                    enable <= 0;
+                    state <= S_IDLE; // or repeat reading
+                end
+            endcase
+        end
+    end
+
+endmodule
