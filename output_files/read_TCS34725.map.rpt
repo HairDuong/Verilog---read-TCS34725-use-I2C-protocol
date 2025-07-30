@@ -1,5 +1,5 @@
 Analysis & Synthesis report for read_TCS34725
-Wed Jul 30 18:28:38 2025
+Wed Jul 30 22:59:53 2025
 Quartus Prime Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
 
 
@@ -32,7 +32,6 @@ Quartus Prime Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
  24. Elapsed Time Per Partition
  25. Connections to In-System Debugging Instance "auto_signaltap_0"
  26. Analysis & Synthesis Messages
- 27. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -59,13 +58,13 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Jul 30 18:28:38 2025       ;
+; Analysis & Synthesis Status        ; Successful - Wed Jul 30 22:59:53 2025       ;
 ; Quartus Prime Version              ; 21.1.0 Build 842 10/21/2021 SJ Lite Edition ;
 ; Revision Name                      ; read_TCS34725                               ;
 ; Top-level Entity Name              ; read_TCS34725                               ;
 ; Family                             ; Cyclone 10 LP                               ;
-; Total logic elements               ; 4,633                                       ;
-;     Total combinational functions  ; 1,758                                       ;
+; Total logic elements               ; 4,684                                       ;
+;     Total combinational functions  ; 1,809                                       ;
 ;     Dedicated logic registers      ; 3,817                                       ;
 ; Total registers                    ; 3817                                        ;
 ; Total pins                         ; 73                                          ;
@@ -189,7 +188,7 @@ https://fpgasoftware.intel.com/eula.
 ; read_TCS34725.sv                                                   ; yes             ; User SystemVerilog HDL File                  ; D:/FBGA project/Veron/I2C/read_TCS34725.sv                                                   ;             ;
 ; i2c_controller.sv                                                  ; yes             ; User SystemVerilog HDL File                  ; D:/FBGA project/Veron/I2C/i2c_controller.sv                                                  ;             ;
 ; cycle_timercycle_timer.sv                                          ; yes             ; User SystemVerilog HDL File                  ; D:/FBGA project/Veron/I2C/cycle_timercycle_timer.sv                                          ;             ;
-; output_files/color_detector.sv                                     ; yes             ; User SystemVerilog HDL File                  ; D:/FBGA project/Veron/I2C/output_files/color_detector.sv                                     ;             ;
+; color_detector.sv                                                  ; yes             ; Auto-Found SystemVerilog HDL File            ; D:/FBGA project/Veron/I2C/color_detector.sv                                                  ;             ;
 ; sld_signaltap.vhd                                                  ; yes             ; Megafunction                                 ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/sld_signaltap.vhd                     ;             ;
 ; sld_signaltap_impl.vhd                                             ; yes             ; Encrypted Megafunction                       ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/sld_signaltap_impl.vhd                ;             ;
 ; sld_ela_control.vhd                                                ; yes             ; Encrypted Megafunction                       ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/sld_ela_control.vhd                   ;             ;
@@ -254,17 +253,17 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+-----------+
 ; Resource                                    ; Usage     ;
 +---------------------------------------------+-----------+
-; Estimated Total logic elements              ; 4,633     ;
+; Estimated Total logic elements              ; 4,684     ;
 ;                                             ;           ;
-; Total combinational functions               ; 1758      ;
+; Total combinational functions               ; 1809      ;
 ; Logic element usage by number of LUT inputs ;           ;
-;     -- 4 input functions                    ; 1019      ;
-;     -- 3 input functions                    ; 486       ;
-;     -- <=2 input functions                  ; 253       ;
+;     -- 4 input functions                    ; 1009      ;
+;     -- 3 input functions                    ; 542       ;
+;     -- <=2 input functions                  ; 258       ;
 ;                                             ;           ;
 ; Logic elements by mode                      ;           ;
-;     -- normal mode                          ; 1620      ;
-;     -- arithmetic mode                      ; 138       ;
+;     -- normal mode                          ; 1611      ;
+;     -- arithmetic mode                      ; 198       ;
 ;                                             ;           ;
 ; Total registers                             ; 3817      ;
 ;     -- Dedicated logic registers            ; 3817      ;
@@ -277,8 +276,8 @@ https://fpgasoftware.intel.com/eula.
 ;                                             ;           ;
 ; Maximum fan-out node                        ; clk~input ;
 ; Maximum fan-out                             ; 2743      ;
-; Total fan-out                               ; 23270     ;
-; Average fan-out                             ; 3.88      ;
+; Total fan-out                               ; 23408     ;
+; Average fan-out                             ; 3.87      ;
 +---------------------------------------------+-----------+
 
 
@@ -287,9 +286,9 @@ https://fpgasoftware.intel.com/eula.
 +-----------------------------------------------------------------------------------------------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------+--------------+
 ; Compilation Hierarchy Node                                                                                                              ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                                                                                                                                                                                                                                       ; Entity Name                       ; Library Name ;
 +-----------------------------------------------------------------------------------------------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------+--------------+
-; |read_TCS34725                                                                                                                          ; 1758 (116)          ; 3817 (175)                ; 267264      ; 0            ; 0       ; 0         ; 73   ; 0            ; |read_TCS34725                                                                                                                                                                                                                                                                                                                                            ; read_TCS34725                     ; work         ;
-;    |color_detector:color_detect|                                                                                                        ; 28 (28)             ; 4 (4)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |read_TCS34725|color_detector:color_detect                                                                                                                                                                                                                                                                                                                ; color_detector                    ; work         ;
-;    |i2c_controller:i2c_master_inst|                                                                                                     ; 275 (260)           ; 82 (72)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |read_TCS34725|i2c_controller:i2c_master_inst                                                                                                                                                                                                                                                                                                             ; i2c_controller                    ; work         ;
+; |read_TCS34725                                                                                                                          ; 1809 (116)          ; 3817 (175)                ; 267264      ; 0            ; 0       ; 0         ; 73   ; 0            ; |read_TCS34725                                                                                                                                                                                                                                                                                                                                            ; read_TCS34725                     ; work         ;
+;    |color_detector:color_detect|                                                                                                        ; 80 (80)             ; 4 (4)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |read_TCS34725|color_detector:color_detect                                                                                                                                                                                                                                                                                                                ; color_detector                    ; work         ;
+;    |i2c_controller:i2c_master_inst|                                                                                                     ; 274 (259)           ; 82 (72)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |read_TCS34725|i2c_controller:i2c_master_inst                                                                                                                                                                                                                                                                                                             ; i2c_controller                    ; work         ;
 ;       |cycle_timer:timeout_cycle_timer|                                                                                                 ; 15 (15)             ; 10 (10)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |read_TCS34725|i2c_controller:i2c_master_inst|cycle_timer:timeout_cycle_timer                                                                                                                                                                                                                                                                             ; cycle_timer                       ; work         ;
 ;    |sld_hub:auto_hub|                                                                                                                   ; 125 (1)             ; 90 (0)                    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |read_TCS34725|sld_hub:auto_hub                                                                                                                                                                                                                                                                                                                           ; sld_hub                           ; altera_sld   ;
 ;       |alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric| ; 124 (0)             ; 90 (0)                    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |read_TCS34725|sld_hub:auto_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric                                                                                                                                                                                           ; alt_sld_fab_with_jtag_input       ; altera_sld   ;
@@ -735,15 +734,16 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                               ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------------------------+
-; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |read_TCS34725|i2c_controller:i2c_master_inst|divider_counter[9]                         ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |read_TCS34725|i2c_controller:i2c_master_inst|miso_data[6]                               ;
-; 5:1                ; 2 bits    ; 6 LEs         ; 2 LEs                ; 4 LEs                  ; Yes        ; |read_TCS34725|mosi_data[2]                                                              ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |read_TCS34725|i2c_controller:i2c_master_inst|divider_counter[13]                        ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |read_TCS34725|color_detector:color_detect|is_red                                        ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |read_TCS34725|i2c_controller:i2c_master_inst|miso_data[4]                               ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 2 LEs                ; 4 LEs                  ; Yes        ; |read_TCS34725|mosi_data[0]                                                              ;
 ; 5:1                ; 7 bits    ; 21 LEs        ; 14 LEs               ; 7 LEs                  ; Yes        ; |read_TCS34725|i2c_controller:i2c_master_inst|saved_device_address[7]                    ;
 ; 7:1                ; 8 bits    ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |read_TCS34725|i2c_controller:i2c_master_inst|saved_register_address[5]                  ;
-; 7:1                ; 8 bits    ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |read_TCS34725|i2c_controller:i2c_master_inst|saved_mosi_data[7]                         ;
-; 6:1                ; 24 bits   ; 96 LEs        ; 24 LEs               ; 72 LEs                 ; Yes        ; |read_TCS34725|delay_counter[4]                                                          ;
+; 7:1                ; 8 bits    ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |read_TCS34725|i2c_controller:i2c_master_inst|saved_mosi_data[0]                         ;
+; 6:1                ; 24 bits   ; 96 LEs        ; 24 LEs               ; 72 LEs                 ; Yes        ; |read_TCS34725|delay_counter[7]                                                          ;
 ; 7:1                ; 2 bits    ; 8 LEs         ; 2 LEs                ; 6 LEs                  ; Yes        ; |read_TCS34725|i2c_controller:i2c_master_inst|byte_counter[-1]                           ;
-; 8:1                ; 2 bits    ; 10 LEs        ; 0 LEs                ; 10 LEs                 ; Yes        ; |read_TCS34725|register_address[5]                                                       ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 0 LEs                ; 10 LEs                 ; Yes        ; |read_TCS34725|register_address[7]                                                       ;
 ; 14:1               ; 4 bits    ; 36 LEs        ; 8 LEs                ; 28 LEs                 ; Yes        ; |read_TCS34725|i2c_controller:i2c_master_inst|bit_counter[2]                             ;
 ; 26:1               ; 2 bits    ; 34 LEs        ; 6 LEs                ; 28 LEs                 ; Yes        ; |read_TCS34725|i2c_controller:i2c_master_inst|state[31]                                  ;
 ; 3:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |read_TCS34725|i2c_controller:i2c_master_inst|cycle_timer:timeout_cycle_timer|counter[1] ;
@@ -907,19 +907,20 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;     SCLR              ; 33                          ;
 ;     plain             ; 3                           ;
 ; cycloneiii_io_obuf    ; 2                           ;
-; cycloneiii_lcell_comb ; 419                         ;
-;     arith             ; 47                          ;
+; cycloneiii_lcell_comb ; 470                         ;
+;     arith             ; 107                         ;
 ;         1 data inputs ; 1                           ;
 ;         2 data inputs ; 46                          ;
-;     normal            ; 372                         ;
+;         3 data inputs ; 60                          ;
+;     normal            ; 363                         ;
 ;         0 data inputs ; 2                           ;
 ;         1 data inputs ; 4                           ;
-;         2 data inputs ; 37                          ;
-;         3 data inputs ; 80                          ;
-;         4 data inputs ; 249                         ;
+;         2 data inputs ; 42                          ;
+;         3 data inputs ; 76                          ;
+;         4 data inputs ; 239                         ;
 ;                       ;                             ;
 ; Max LUT depth         ; 7.00                        ;
-; Average LUT depth     ; 3.95                        ;
+; Average LUT depth     ; 3.99                        ;
 +-----------------------+-----------------------------+
 
 
@@ -1501,7 +1502,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
-    Info: Processing started: Wed Jul 30 18:28:18 2025
+    Info: Processing started: Wed Jul 30 22:59:30 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off read_TCS34725 -c read_TCS34725
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -1514,8 +1515,7 @@ Info (12021): Found 1 design units, including 1 entities, in source file i2c_con
     Info (12023): Found entity 1: i2c_controller File: D:/FBGA project/Veron/I2C/i2c_controller.sv Line: 22
 Info (12021): Found 1 design units, including 1 entities, in source file cycle_timercycle_timer.sv
     Info (12023): Found entity 1: cycle_timer File: D:/FBGA project/Veron/I2C/cycle_timercycle_timer.sv Line: 22
-Info (12021): Found 1 design units, including 1 entities, in source file output_files/color_detector.sv
-    Info (12023): Found entity 1: color_detector File: D:/FBGA project/Veron/I2C/output_files/color_detector.sv Line: 1
+Warning (12019): Can't analyze file -- file output_files/color_detector.sv is missing
 Info (12127): Elaborating entity "read_TCS34725" for the top level hierarchy
 Warning (10230): Verilog HDL assignment warning at read_TCS34725.sv(140): truncated value with size 32 to match size of target (24) File: D:/FBGA project/Veron/I2C/read_TCS34725.sv Line: 140
 Warning (10230): Verilog HDL assignment warning at read_TCS34725.sv(160): truncated value with size 32 to match size of target (24) File: D:/FBGA project/Veron/I2C/read_TCS34725.sv Line: 160
@@ -1538,7 +1538,15 @@ Warning (10230): Verilog HDL assignment warning at i2c_controller.sv(574): trunc
 Warning (10230): Verilog HDL assignment warning at i2c_controller.sv(579): truncated value with size 32 to match size of target (2) File: D:/FBGA project/Veron/I2C/i2c_controller.sv Line: 579
 Info (12128): Elaborating entity "cycle_timer" for hierarchy "i2c_controller:i2c_master_inst|cycle_timer:timeout_cycle_timer" File: D:/FBGA project/Veron/I2C/i2c_controller.sv Line: 96
 Warning (10230): Verilog HDL assignment warning at cycle_timercycle_timer.sv(56): truncated value with size 32 to match size of target (10) File: D:/FBGA project/Veron/I2C/cycle_timercycle_timer.sv Line: 56
+Warning (12125): Using design file color_detector.sv, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: color_detector File: D:/FBGA project/Veron/I2C/color_detector.sv Line: 1
 Info (12128): Elaborating entity "color_detector" for hierarchy "color_detector:color_detect" File: D:/FBGA project/Veron/I2C/read_TCS34725.sv Line: 93
+Warning (10036): Verilog HDL or VHDL warning at color_detector.sv(24): object "red_ratio" assigned a value but never read File: D:/FBGA project/Veron/I2C/color_detector.sv Line: 24
+Warning (10036): Verilog HDL or VHDL warning at color_detector.sv(25): object "green_ratio" assigned a value but never read File: D:/FBGA project/Veron/I2C/color_detector.sv Line: 25
+Warning (10036): Verilog HDL or VHDL warning at color_detector.sv(26): object "blue_ratio" assigned a value but never read File: D:/FBGA project/Veron/I2C/color_detector.sv Line: 26
+Warning (10230): Verilog HDL assignment warning at color_detector.sv(24): truncated value with size 32 to match size of target (16) File: D:/FBGA project/Veron/I2C/color_detector.sv Line: 24
+Warning (10230): Verilog HDL assignment warning at color_detector.sv(25): truncated value with size 32 to match size of target (16) File: D:/FBGA project/Veron/I2C/color_detector.sv Line: 25
+Warning (10230): Verilog HDL assignment warning at color_detector.sv(26): truncated value with size 32 to match size of target (16) File: D:/FBGA project/Veron/I2C/color_detector.sv Line: 26
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_ed24.tdf
     Info (12023): Found entity 1: altsyncram_ed24 File: D:/FBGA project/Veron/I2C/db/altsyncram_ed24.tdf Line: 28
 Info (12021): Found 1 design units, including 1 entities, in source file db/mux_isc.tdf
@@ -1561,7 +1569,7 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/cmpr
     Info (12023): Found entity 1: cmpr_ggc File: D:/FBGA project/Veron/I2C/db/cmpr_ggc.tdf Line: 23
 Info (12033): Analysis and Synthesis generated Signal Tap or debug node instance "auto_signaltap_0"
 Info (11170): Starting IP generation for the debug fabric: alt_sld_fab.
-Info (11172): 2025.07.30.18:28:30 Progress: Loading sldcf34fab3/alt_sld_fab_wrapper_hw.tcl
+Info (11172): 2025.07.30.22:59:43 Progress: Loading sldcf34fab3/alt_sld_fab_wrapper_hw.tcl
 Info (11172): Alt_sld_fab.alt_sld_fab: SLD fabric agents which did not specify prefer_host were connected to JTAG
 Info (11172): Alt_sld_fab: Generating alt_sld_fab "alt_sld_fab" for QUARTUS_SYNTH
 Info (11172): Alt_sld_fab: "alt_sld_fab" instantiated alt_sld_fab "alt_sld_fab"
@@ -1587,26 +1595,19 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/ip/s
 Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Info (286031): Timing-Driven Synthesis is running on partition "Top"
 Info (17049): 6 registers lost all their fanouts during netlist optimizations.
-Info (144001): Generated suppressed messages file D:/FBGA project/Veron/I2C/output_files/read_TCS34725.map.smsg
 Info (35024): Successfully connected in-system debug instance "auto_signaltap_0" to all 555 required data inputs, trigger inputs, acquisition clocks, and dynamic pins
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 4993 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 5044 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 5 input pins
     Info (21059): Implemented 70 output pins
     Info (21060): Implemented 2 bidirectional pins
-    Info (21061): Implemented 4654 logic cells
+    Info (21061): Implemented 4705 logic cells
     Info (21064): Implemented 261 RAM segments
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 22 warnings
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 30 warnings
     Info: Peak virtual memory: 4926 megabytes
-    Info: Processing ended: Wed Jul 30 18:28:38 2025
-    Info: Elapsed time: 00:00:20
-    Info: Total CPU time (on all processors): 00:00:36
-
-
-+------------------------------------------+
-; Analysis & Synthesis Suppressed Messages ;
-+------------------------------------------+
-The suppressed messages can be found in D:/FBGA project/Veron/I2C/output_files/read_TCS34725.map.smsg.
+    Info: Processing ended: Wed Jul 30 22:59:53 2025
+    Info: Elapsed time: 00:00:23
+    Info: Total CPU time (on all processors): 00:00:41
 
 
