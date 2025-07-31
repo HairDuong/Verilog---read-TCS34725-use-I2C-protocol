@@ -38,15 +38,15 @@ module color_detector (
             is_blue    <= 0;
             is_unknown <= 0;
 
-           if (blue == green && green > red)
-    is_blue <= 1;
-else if (green > red && red > blue)
-    is_green <= 1;
-else if (red > green && green > blue)
-    is_red <= 1;
-else
-    is_unknown <= 1;
-
+				if (blue == green && green > red)
+				is_blue <= 1;
+				else if (green > red && red > blue)
+				is_green <= 1;
+				else if (red > green && green > blue)
+				is_red <= 1;
+				else
+				is_unknown <= 1;
+		
             end
         end
 

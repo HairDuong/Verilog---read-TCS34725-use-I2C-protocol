@@ -1,5 +1,5 @@
 Analysis & Synthesis report for read_TCS34725
-Wed Jul 30 22:59:53 2025
+Wed Jul 30 23:18:33 2025
 Quartus Prime Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
 
 
@@ -58,15 +58,15 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Jul 30 22:59:53 2025       ;
+; Analysis & Synthesis Status        ; Successful - Wed Jul 30 23:18:33 2025       ;
 ; Quartus Prime Version              ; 21.1.0 Build 842 10/21/2021 SJ Lite Edition ;
 ; Revision Name                      ; read_TCS34725                               ;
 ; Top-level Entity Name              ; read_TCS34725                               ;
 ; Family                             ; Cyclone 10 LP                               ;
-; Total logic elements               ; 4,684                                       ;
-;     Total combinational functions  ; 1,809                                       ;
-;     Dedicated logic registers      ; 3,817                                       ;
-; Total registers                    ; 3817                                        ;
+; Total logic elements               ; 4,695                                       ;
+;     Total combinational functions  ; 1,820                                       ;
+;     Dedicated logic registers      ; 3,819                                       ;
+; Total registers                    ; 3819                                        ;
 ; Total pins                         ; 73                                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 267,264                                     ;
@@ -253,20 +253,20 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+-----------+
 ; Resource                                    ; Usage     ;
 +---------------------------------------------+-----------+
-; Estimated Total logic elements              ; 4,684     ;
+; Estimated Total logic elements              ; 4,695     ;
 ;                                             ;           ;
-; Total combinational functions               ; 1809      ;
+; Total combinational functions               ; 1820      ;
 ; Logic element usage by number of LUT inputs ;           ;
-;     -- 4 input functions                    ; 1009      ;
-;     -- 3 input functions                    ; 542       ;
-;     -- <=2 input functions                  ; 258       ;
+;     -- 4 input functions                    ; 1037      ;
+;     -- 3 input functions                    ; 532       ;
+;     -- <=2 input functions                  ; 251       ;
 ;                                             ;           ;
 ; Logic elements by mode                      ;           ;
-;     -- normal mode                          ; 1611      ;
+;     -- normal mode                          ; 1622      ;
 ;     -- arithmetic mode                      ; 198       ;
 ;                                             ;           ;
-; Total registers                             ; 3817      ;
-;     -- Dedicated logic registers            ; 3817      ;
+; Total registers                             ; 3819      ;
+;     -- Dedicated logic registers            ; 3819      ;
 ;     -- I/O registers                        ; 0         ;
 ;                                             ;           ;
 ; I/O pins                                    ; 73        ;
@@ -275,9 +275,9 @@ https://fpgasoftware.intel.com/eula.
 ; Embedded Multiplier 9-bit elements          ; 0         ;
 ;                                             ;           ;
 ; Maximum fan-out node                        ; clk~input ;
-; Maximum fan-out                             ; 2743      ;
-; Total fan-out                               ; 23408     ;
-; Average fan-out                             ; 3.87      ;
+; Maximum fan-out                             ; 2745      ;
+; Total fan-out                               ; 23481     ;
+; Average fan-out                             ; 3.88      ;
 +---------------------------------------------+-----------+
 
 
@@ -286,9 +286,9 @@ https://fpgasoftware.intel.com/eula.
 +-----------------------------------------------------------------------------------------------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------+--------------+
 ; Compilation Hierarchy Node                                                                                                              ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                                                                                                                                                                                                                                       ; Entity Name                       ; Library Name ;
 +-----------------------------------------------------------------------------------------------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------+--------------+
-; |read_TCS34725                                                                                                                          ; 1809 (116)          ; 3817 (175)                ; 267264      ; 0            ; 0       ; 0         ; 73   ; 0            ; |read_TCS34725                                                                                                                                                                                                                                                                                                                                            ; read_TCS34725                     ; work         ;
+; |read_TCS34725                                                                                                                          ; 1820 (122)          ; 3819 (177)                ; 267264      ; 0            ; 0       ; 0         ; 73   ; 0            ; |read_TCS34725                                                                                                                                                                                                                                                                                                                                            ; read_TCS34725                     ; work         ;
 ;    |color_detector:color_detect|                                                                                                        ; 80 (80)             ; 4 (4)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |read_TCS34725|color_detector:color_detect                                                                                                                                                                                                                                                                                                                ; color_detector                    ; work         ;
-;    |i2c_controller:i2c_master_inst|                                                                                                     ; 274 (259)           ; 82 (72)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |read_TCS34725|i2c_controller:i2c_master_inst                                                                                                                                                                                                                                                                                                             ; i2c_controller                    ; work         ;
+;    |i2c_controller:i2c_master_inst|                                                                                                     ; 279 (264)           ; 82 (72)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |read_TCS34725|i2c_controller:i2c_master_inst                                                                                                                                                                                                                                                                                                             ; i2c_controller                    ; work         ;
 ;       |cycle_timer:timeout_cycle_timer|                                                                                                 ; 15 (15)             ; 10 (10)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |read_TCS34725|i2c_controller:i2c_master_inst|cycle_timer:timeout_cycle_timer                                                                                                                                                                                                                                                                             ; cycle_timer                       ; work         ;
 ;    |sld_hub:auto_hub|                                                                                                                   ; 125 (1)             ; 90 (0)                    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |read_TCS34725|sld_hub:auto_hub                                                                                                                                                                                                                                                                                                                           ; sld_hub                           ; altera_sld   ;
 ;       |alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric| ; 124 (0)             ; 90 (0)                    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |read_TCS34725|sld_hub:auto_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric                                                                                                                                                                                           ; alt_sld_fab_with_jtag_input       ; altera_sld   ;
@@ -620,27 +620,28 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 
 
 Encoding Type:  One-Hot
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; State Machine - |read_TCS34725|state                                                                                                                                                                                                                                                                                                                        ;
-+--------------------------+--------------+-----------------------+---------------------+---------------------+----------------------+----------------------+--------------------+--------------------+----------------------+----------------------+--------------------------+---------------------+------------------+----------------------+--------------+
-; Name                     ; state.S_DONE ; state.S_UPDATE_OUTPUT ; state.S_READ_BLUE_H ; state.S_READ_BLUE_L ; state.S_READ_GREEN_H ; state.S_READ_GREEN_L ; state.S_READ_RED_H ; state.S_READ_RED_L ; state.S_READ_CLEAR_H ; state.S_READ_CLEAR_L ; state.S_WAIT_INTEGRATION ; state.S_WRITE_ATIME ; state.S_WAIT_PON ; state.S_WRITE_ENABLE ; state.S_IDLE ;
-+--------------------------+--------------+-----------------------+---------------------+---------------------+----------------------+----------------------+--------------------+--------------------+----------------------+----------------------+--------------------------+---------------------+------------------+----------------------+--------------+
-; state.S_IDLE             ; 0            ; 0                     ; 0                   ; 0                   ; 0                    ; 0                    ; 0                  ; 0                  ; 0                    ; 0                    ; 0                        ; 0                   ; 0                ; 0                    ; 0            ;
-; state.S_WRITE_ENABLE     ; 0            ; 0                     ; 0                   ; 0                   ; 0                    ; 0                    ; 0                  ; 0                  ; 0                    ; 0                    ; 0                        ; 0                   ; 0                ; 1                    ; 1            ;
-; state.S_WAIT_PON         ; 0            ; 0                     ; 0                   ; 0                   ; 0                    ; 0                    ; 0                  ; 0                  ; 0                    ; 0                    ; 0                        ; 0                   ; 1                ; 0                    ; 1            ;
-; state.S_WRITE_ATIME      ; 0            ; 0                     ; 0                   ; 0                   ; 0                    ; 0                    ; 0                  ; 0                  ; 0                    ; 0                    ; 0                        ; 1                   ; 0                ; 0                    ; 1            ;
-; state.S_WAIT_INTEGRATION ; 0            ; 0                     ; 0                   ; 0                   ; 0                    ; 0                    ; 0                  ; 0                  ; 0                    ; 0                    ; 1                        ; 0                   ; 0                ; 0                    ; 1            ;
-; state.S_READ_CLEAR_L     ; 0            ; 0                     ; 0                   ; 0                   ; 0                    ; 0                    ; 0                  ; 0                  ; 0                    ; 1                    ; 0                        ; 0                   ; 0                ; 0                    ; 1            ;
-; state.S_READ_CLEAR_H     ; 0            ; 0                     ; 0                   ; 0                   ; 0                    ; 0                    ; 0                  ; 0                  ; 1                    ; 0                    ; 0                        ; 0                   ; 0                ; 0                    ; 1            ;
-; state.S_READ_RED_L       ; 0            ; 0                     ; 0                   ; 0                   ; 0                    ; 0                    ; 0                  ; 1                  ; 0                    ; 0                    ; 0                        ; 0                   ; 0                ; 0                    ; 1            ;
-; state.S_READ_RED_H       ; 0            ; 0                     ; 0                   ; 0                   ; 0                    ; 0                    ; 1                  ; 0                  ; 0                    ; 0                    ; 0                        ; 0                   ; 0                ; 0                    ; 1            ;
-; state.S_READ_GREEN_L     ; 0            ; 0                     ; 0                   ; 0                   ; 0                    ; 1                    ; 0                  ; 0                  ; 0                    ; 0                    ; 0                        ; 0                   ; 0                ; 0                    ; 1            ;
-; state.S_READ_GREEN_H     ; 0            ; 0                     ; 0                   ; 0                   ; 1                    ; 0                    ; 0                  ; 0                  ; 0                    ; 0                    ; 0                        ; 0                   ; 0                ; 0                    ; 1            ;
-; state.S_READ_BLUE_L      ; 0            ; 0                     ; 0                   ; 1                   ; 0                    ; 0                    ; 0                  ; 0                  ; 0                    ; 0                    ; 0                        ; 0                   ; 0                ; 0                    ; 1            ;
-; state.S_READ_BLUE_H      ; 0            ; 0                     ; 1                   ; 0                   ; 0                    ; 0                    ; 0                  ; 0                  ; 0                    ; 0                    ; 0                        ; 0                   ; 0                ; 0                    ; 1            ;
-; state.S_UPDATE_OUTPUT    ; 0            ; 1                     ; 0                   ; 0                   ; 0                    ; 0                    ; 0                  ; 0                  ; 0                    ; 0                    ; 0                        ; 0                   ; 0                ; 0                    ; 1            ;
-; state.S_DONE             ; 1            ; 0                     ; 0                   ; 0                   ; 0                    ; 0                    ; 0                  ; 0                  ; 0                    ; 0                    ; 0                        ; 0                   ; 0                ; 0                    ; 1            ;
-+--------------------------+--------------+-----------------------+---------------------+---------------------+----------------------+----------------------+--------------------+--------------------+----------------------+----------------------+--------------------------+---------------------+------------------+----------------------+--------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |read_TCS34725|state                                                                                                                                                                                                                                                                                                                                             ;
++--------------------------+--------------+-----------------------+---------------------+---------------------+----------------------+----------------------+--------------------+--------------------+----------------------+----------------------+--------------------------+--------------------+---------------------+------------------+----------------------+--------------+
+; Name                     ; state.S_DONE ; state.S_UPDATE_OUTPUT ; state.S_READ_BLUE_H ; state.S_READ_BLUE_L ; state.S_READ_GREEN_H ; state.S_READ_GREEN_L ; state.S_READ_RED_H ; state.S_READ_RED_L ; state.S_READ_CLEAR_H ; state.S_READ_CLEAR_L ; state.S_WAIT_INTEGRATION ; state.S_WRITE_GAIN ; state.S_WRITE_ATIME ; state.S_WAIT_PON ; state.S_WRITE_ENABLE ; state.S_IDLE ;
++--------------------------+--------------+-----------------------+---------------------+---------------------+----------------------+----------------------+--------------------+--------------------+----------------------+----------------------+--------------------------+--------------------+---------------------+------------------+----------------------+--------------+
+; state.S_IDLE             ; 0            ; 0                     ; 0                   ; 0                   ; 0                    ; 0                    ; 0                  ; 0                  ; 0                    ; 0                    ; 0                        ; 0                  ; 0                   ; 0                ; 0                    ; 0            ;
+; state.S_WRITE_ENABLE     ; 0            ; 0                     ; 0                   ; 0                   ; 0                    ; 0                    ; 0                  ; 0                  ; 0                    ; 0                    ; 0                        ; 0                  ; 0                   ; 0                ; 1                    ; 1            ;
+; state.S_WAIT_PON         ; 0            ; 0                     ; 0                   ; 0                   ; 0                    ; 0                    ; 0                  ; 0                  ; 0                    ; 0                    ; 0                        ; 0                  ; 0                   ; 1                ; 0                    ; 1            ;
+; state.S_WRITE_ATIME      ; 0            ; 0                     ; 0                   ; 0                   ; 0                    ; 0                    ; 0                  ; 0                  ; 0                    ; 0                    ; 0                        ; 0                  ; 1                   ; 0                ; 0                    ; 1            ;
+; state.S_WRITE_GAIN       ; 0            ; 0                     ; 0                   ; 0                   ; 0                    ; 0                    ; 0                  ; 0                  ; 0                    ; 0                    ; 0                        ; 1                  ; 0                   ; 0                ; 0                    ; 1            ;
+; state.S_WAIT_INTEGRATION ; 0            ; 0                     ; 0                   ; 0                   ; 0                    ; 0                    ; 0                  ; 0                  ; 0                    ; 0                    ; 1                        ; 0                  ; 0                   ; 0                ; 0                    ; 1            ;
+; state.S_READ_CLEAR_L     ; 0            ; 0                     ; 0                   ; 0                   ; 0                    ; 0                    ; 0                  ; 0                  ; 0                    ; 1                    ; 0                        ; 0                  ; 0                   ; 0                ; 0                    ; 1            ;
+; state.S_READ_CLEAR_H     ; 0            ; 0                     ; 0                   ; 0                   ; 0                    ; 0                    ; 0                  ; 0                  ; 1                    ; 0                    ; 0                        ; 0                  ; 0                   ; 0                ; 0                    ; 1            ;
+; state.S_READ_RED_L       ; 0            ; 0                     ; 0                   ; 0                   ; 0                    ; 0                    ; 0                  ; 1                  ; 0                    ; 0                    ; 0                        ; 0                  ; 0                   ; 0                ; 0                    ; 1            ;
+; state.S_READ_RED_H       ; 0            ; 0                     ; 0                   ; 0                   ; 0                    ; 0                    ; 1                  ; 0                  ; 0                    ; 0                    ; 0                        ; 0                  ; 0                   ; 0                ; 0                    ; 1            ;
+; state.S_READ_GREEN_L     ; 0            ; 0                     ; 0                   ; 0                   ; 0                    ; 1                    ; 0                  ; 0                  ; 0                    ; 0                    ; 0                        ; 0                  ; 0                   ; 0                ; 0                    ; 1            ;
+; state.S_READ_GREEN_H     ; 0            ; 0                     ; 0                   ; 0                   ; 1                    ; 0                    ; 0                  ; 0                  ; 0                    ; 0                    ; 0                        ; 0                  ; 0                   ; 0                ; 0                    ; 1            ;
+; state.S_READ_BLUE_L      ; 0            ; 0                     ; 0                   ; 1                   ; 0                    ; 0                    ; 0                  ; 0                  ; 0                    ; 0                    ; 0                        ; 0                  ; 0                   ; 0                ; 0                    ; 1            ;
+; state.S_READ_BLUE_H      ; 0            ; 0                     ; 1                   ; 0                   ; 0                    ; 0                    ; 0                  ; 0                  ; 0                    ; 0                    ; 0                        ; 0                  ; 0                   ; 0                ; 0                    ; 1            ;
+; state.S_UPDATE_OUTPUT    ; 0            ; 1                     ; 0                   ; 0                   ; 0                    ; 0                    ; 0                  ; 0                  ; 0                    ; 0                    ; 0                        ; 0                  ; 0                   ; 0                ; 0                    ; 1            ;
+; state.S_DONE             ; 1            ; 0                     ; 0                   ; 0                   ; 0                    ; 0                    ; 0                  ; 0                  ; 0                    ; 0                    ; 0                        ; 0                  ; 0                   ; 0                ; 0                    ; 1            ;
++--------------------------+--------------+-----------------------+---------------------+---------------------+----------------------+----------------------+--------------------+--------------------+----------------------+----------------------+--------------------------+--------------------+---------------------+------------------+----------------------+--------------+
 
 
 Encoding Type:  One-Hot
@@ -662,18 +663,18 @@ Encoding Type:  One-Hot
 ; Register name                                          ; Reason for Removal                                        ;
 +--------------------------------------------------------+-----------------------------------------------------------+
 ; i2c_controller:i2c_master_inst|state[4..9,11..30]      ; Merged with i2c_controller:i2c_master_inst|state[10]      ;
-; mosi_data[1]                                           ; Merged with mosi_data[0]                                  ;
 ; mosi_data[3..7]                                        ; Merged with mosi_data[2]                                  ;
 ; register_address[4]                                    ; Merged with read_write                                    ;
 ; register_address[6]                                    ; Merged with register_address[5]                           ;
 ; i2c_controller:i2c_master_inst|post_state[4..9,11..31] ; Merged with i2c_controller:i2c_master_inst|post_state[10] ;
-; mosi_data[0]                                           ; Stuck at VCC due to stuck port data_in                    ;
 ; register_address[5]                                    ; Stuck at GND due to stuck port data_in                    ;
 ; register_address[7]                                    ; Stuck at VCC due to stuck port data_in                    ;
-; state~19                                               ; Lost fanout                                               ;
+; mosi_data[1]                                           ; Stuck at VCC due to stuck port data_in                    ;
 ; state~20                                               ; Lost fanout                                               ;
 ; state~21                                               ; Lost fanout                                               ;
 ; state~22                                               ; Lost fanout                                               ;
+; state~23                                               ; Lost fanout                                               ;
+; state~24                                               ; Lost fanout                                               ;
 ; i2c_controller:i2c_master_inst|process_counter~2       ; Lost fanout                                               ;
 ; i2c_controller:i2c_master_inst|process_counter~3       ; Lost fanout                                               ;
 ; i2c_controller:i2c_master_inst|state[31]               ; Merged with i2c_controller:i2c_master_inst|state[10]      ;
@@ -687,12 +688,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 3817  ;
+; Total registers                              ; 3819  ;
 ; Number of registers using Synchronous Clear  ; 97    ;
 ; Number of registers using Synchronous Load   ; 105   ;
-; Number of registers using Asynchronous Clear ; 1382  ;
+; Number of registers using Asynchronous Clear ; 1383  ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 1296  ;
+; Number of registers using Clock Enable       ; 1298  ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -734,23 +735,23 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                               ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------------------------+
-; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |read_TCS34725|i2c_controller:i2c_master_inst|divider_counter[13]                        ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |read_TCS34725|i2c_controller:i2c_master_inst|divider_counter[6]                         ;
 ; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |read_TCS34725|color_detector:color_detect|is_red                                        ;
 ; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |read_TCS34725|i2c_controller:i2c_master_inst|miso_data[4]                               ;
-; 5:1                ; 2 bits    ; 6 LEs         ; 2 LEs                ; 4 LEs                  ; Yes        ; |read_TCS34725|mosi_data[0]                                                              ;
 ; 5:1                ; 7 bits    ; 21 LEs        ; 14 LEs               ; 7 LEs                  ; Yes        ; |read_TCS34725|i2c_controller:i2c_master_inst|saved_device_address[7]                    ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |read_TCS34725|mosi_data[0]                                                              ;
 ; 7:1                ; 8 bits    ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |read_TCS34725|i2c_controller:i2c_master_inst|saved_register_address[5]                  ;
 ; 7:1                ; 8 bits    ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |read_TCS34725|i2c_controller:i2c_master_inst|saved_mosi_data[0]                         ;
 ; 6:1                ; 24 bits   ; 96 LEs        ; 24 LEs               ; 72 LEs                 ; Yes        ; |read_TCS34725|delay_counter[7]                                                          ;
 ; 7:1                ; 2 bits    ; 8 LEs         ; 2 LEs                ; 6 LEs                  ; Yes        ; |read_TCS34725|i2c_controller:i2c_master_inst|byte_counter[-1]                           ;
-; 8:1                ; 2 bits    ; 10 LEs        ; 0 LEs                ; 10 LEs                 ; Yes        ; |read_TCS34725|register_address[7]                                                       ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 0 LEs                ; 10 LEs                 ; Yes        ; |read_TCS34725|register_address[5]                                                       ;
 ; 14:1               ; 4 bits    ; 36 LEs        ; 8 LEs                ; 28 LEs                 ; Yes        ; |read_TCS34725|i2c_controller:i2c_master_inst|bit_counter[2]                             ;
-; 26:1               ; 2 bits    ; 34 LEs        ; 6 LEs                ; 28 LEs                 ; Yes        ; |read_TCS34725|i2c_controller:i2c_master_inst|state[31]                                  ;
+; 26:1               ; 2 bits    ; 34 LEs        ; 6 LEs                ; 28 LEs                 ; Yes        ; |read_TCS34725|i2c_controller:i2c_master_inst|state[10]                                  ;
 ; 3:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |read_TCS34725|i2c_controller:i2c_master_inst|cycle_timer:timeout_cycle_timer|counter[1] ;
 ; 3:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |read_TCS34725|i2c_controller:i2c_master_inst|_process_counter                           ;
 ; 8:1                ; 3 bits    ; 15 LEs        ; 9 LEs                ; 6 LEs                  ; No         ; |read_TCS34725|i2c_controller:i2c_master_inst|process_counter                            ;
 ; 8:1                ; 2 bits    ; 10 LEs        ; 4 LEs                ; 6 LEs                  ; No         ; |read_TCS34725|Selector21                                                                ;
-; 9:1                ; 2 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; No         ; |read_TCS34725|Selector23                                                                ;
+; 9:1                ; 2 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; No         ; |read_TCS34725|Selector19                                                                ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------------------------+
 
 
@@ -898,29 +899,29 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 262                         ;
-; cycloneiii_ff         ; 261                         ;
-;     CLR               ; 17                          ;
-;     ENA               ; 26                          ;
+; cycloneiii_ff         ; 263                         ;
+;     CLR               ; 18                          ;
+;     ENA               ; 28                          ;
 ;     ENA CLR           ; 132                         ;
 ;     ENA CLR SLD       ; 34                          ;
 ;     ENA SCLR          ; 16                          ;
 ;     SCLR              ; 33                          ;
-;     plain             ; 3                           ;
+;     plain             ; 2                           ;
 ; cycloneiii_io_obuf    ; 2                           ;
-; cycloneiii_lcell_comb ; 470                         ;
+; cycloneiii_lcell_comb ; 481                         ;
 ;     arith             ; 107                         ;
 ;         1 data inputs ; 1                           ;
 ;         2 data inputs ; 46                          ;
 ;         3 data inputs ; 60                          ;
-;     normal            ; 363                         ;
+;     normal            ; 374                         ;
 ;         0 data inputs ; 2                           ;
-;         1 data inputs ; 4                           ;
-;         2 data inputs ; 42                          ;
-;         3 data inputs ; 76                          ;
-;         4 data inputs ; 239                         ;
+;         1 data inputs ; 6                           ;
+;         2 data inputs ; 33                          ;
+;         3 data inputs ; 66                          ;
+;         4 data inputs ; 267                         ;
 ;                       ;                             ;
 ; Max LUT depth         ; 7.00                        ;
-; Average LUT depth     ; 3.99                        ;
+; Average LUT depth     ; 3.97                        ;
 +-----------------------+-----------------------------+
 
 
@@ -929,7 +930,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:01     ;
+; Top            ; 00:00:02     ;
 +----------------+--------------+
 
 
@@ -940,8 +941,8 @@ Note: In order to hide this table in the UI and the text report file, please set
 +--------------------------+---------------+-----------+--------------------------------+-------------------+----------------------------------------+---------+
 ; WideOr0                  ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; WideOr0                                ; N/A     ;
 ; WideOr0                  ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; WideOr0                                ; N/A     ;
-; WideOr1                  ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; WideOr1                                ; N/A     ;
-; WideOr1                  ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; WideOr1                                ; N/A     ;
+; WideOr1                  ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; WideOr0~0_wirecell                     ; N/A     ;
+; WideOr1                  ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; WideOr0~0_wirecell                     ; N/A     ;
 ; WideOr2                  ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; WideOr2                                ; N/A     ;
 ; WideOr2                  ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; WideOr2                                ; N/A     ;
 ; blue[0]                  ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; blue[0]~reg0                           ; N/A     ;
@@ -1299,8 +1300,8 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; is_red                   ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; color_detector:color_detect|is_red     ; N/A     ;
 ; is_unknown               ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; color_detector:color_detect|is_unknown ; N/A     ;
 ; is_unknown               ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; color_detector:color_detect|is_unknown ; N/A     ;
-; mosi_data[0]             ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; VCC                                    ; N/A     ;
-; mosi_data[0]             ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; VCC                                    ; N/A     ;
+; mosi_data[0]             ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; mosi_data[0]                           ; N/A     ;
+; mosi_data[0]             ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; mosi_data[0]                           ; N/A     ;
 ; mosi_data[1]             ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; VCC                                    ; N/A     ;
 ; mosi_data[1]             ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; VCC                                    ; N/A     ;
 ; mosi_data[2]             ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; mosi_data[2]                           ; N/A     ;
@@ -1502,7 +1503,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
-    Info: Processing started: Wed Jul 30 22:59:30 2025
+    Info: Processing started: Wed Jul 30 23:18:08 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off read_TCS34725 -c read_TCS34725
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -1517,9 +1518,9 @@ Info (12021): Found 1 design units, including 1 entities, in source file cycle_t
     Info (12023): Found entity 1: cycle_timer File: D:/FBGA project/Veron/I2C/cycle_timercycle_timer.sv Line: 22
 Warning (12019): Can't analyze file -- file output_files/color_detector.sv is missing
 Info (12127): Elaborating entity "read_TCS34725" for the top level hierarchy
-Warning (10230): Verilog HDL assignment warning at read_TCS34725.sv(140): truncated value with size 32 to match size of target (24) File: D:/FBGA project/Veron/I2C/read_TCS34725.sv Line: 140
-Warning (10230): Verilog HDL assignment warning at read_TCS34725.sv(160): truncated value with size 32 to match size of target (24) File: D:/FBGA project/Veron/I2C/read_TCS34725.sv Line: 160
-Info (12128): Elaborating entity "i2c_controller" for hierarchy "i2c_controller:i2c_master_inst" File: D:/FBGA project/Veron/I2C/read_TCS34725.sv Line: 76
+Warning (10230): Verilog HDL assignment warning at read_TCS34725.sv(141): truncated value with size 32 to match size of target (24) File: D:/FBGA project/Veron/I2C/read_TCS34725.sv Line: 141
+Warning (10230): Verilog HDL assignment warning at read_TCS34725.sv(172): truncated value with size 32 to match size of target (24) File: D:/FBGA project/Veron/I2C/read_TCS34725.sv Line: 172
+Info (12128): Elaborating entity "i2c_controller" for hierarchy "i2c_controller:i2c_master_inst" File: D:/FBGA project/Veron/I2C/read_TCS34725.sv Line: 77
 Warning (10230): Verilog HDL assignment warning at i2c_controller.sv(153): truncated value with size 32 to match size of target (1) File: D:/FBGA project/Veron/I2C/i2c_controller.sv Line: 153
 Warning (10230): Verilog HDL assignment warning at i2c_controller.sv(154): truncated value with size 32 to match size of target (16) File: D:/FBGA project/Veron/I2C/i2c_controller.sv Line: 154
 Warning (10230): Verilog HDL assignment warning at i2c_controller.sv(174): truncated value with size 32 to match size of target (1) File: D:/FBGA project/Veron/I2C/i2c_controller.sv Line: 174
@@ -1540,7 +1541,7 @@ Info (12128): Elaborating entity "cycle_timer" for hierarchy "i2c_controller:i2c
 Warning (10230): Verilog HDL assignment warning at cycle_timercycle_timer.sv(56): truncated value with size 32 to match size of target (10) File: D:/FBGA project/Veron/I2C/cycle_timercycle_timer.sv Line: 56
 Warning (12125): Using design file color_detector.sv, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
     Info (12023): Found entity 1: color_detector File: D:/FBGA project/Veron/I2C/color_detector.sv Line: 1
-Info (12128): Elaborating entity "color_detector" for hierarchy "color_detector:color_detect" File: D:/FBGA project/Veron/I2C/read_TCS34725.sv Line: 93
+Info (12128): Elaborating entity "color_detector" for hierarchy "color_detector:color_detect" File: D:/FBGA project/Veron/I2C/read_TCS34725.sv Line: 94
 Warning (10036): Verilog HDL or VHDL warning at color_detector.sv(24): object "red_ratio" assigned a value but never read File: D:/FBGA project/Veron/I2C/color_detector.sv Line: 24
 Warning (10036): Verilog HDL or VHDL warning at color_detector.sv(25): object "green_ratio" assigned a value but never read File: D:/FBGA project/Veron/I2C/color_detector.sv Line: 25
 Warning (10036): Verilog HDL or VHDL warning at color_detector.sv(26): object "blue_ratio" assigned a value but never read File: D:/FBGA project/Veron/I2C/color_detector.sv Line: 26
@@ -1569,7 +1570,7 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/cmpr
     Info (12023): Found entity 1: cmpr_ggc File: D:/FBGA project/Veron/I2C/db/cmpr_ggc.tdf Line: 23
 Info (12033): Analysis and Synthesis generated Signal Tap or debug node instance "auto_signaltap_0"
 Info (11170): Starting IP generation for the debug fabric: alt_sld_fab.
-Info (11172): 2025.07.30.22:59:43 Progress: Loading sldcf34fab3/alt_sld_fab_wrapper_hw.tcl
+Info (11172): 2025.07.30.23:18:20 Progress: Loading sldcf34fab3/alt_sld_fab_wrapper_hw.tcl
 Info (11172): Alt_sld_fab.alt_sld_fab: SLD fabric agents which did not specify prefer_host were connected to JTAG
 Info (11172): Alt_sld_fab: Generating alt_sld_fab "alt_sld_fab" for QUARTUS_SYNTH
 Info (11172): Alt_sld_fab: "alt_sld_fab" instantiated alt_sld_fab "alt_sld_fab"
@@ -1594,20 +1595,20 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/ip/s
     Info (12023): Found entity 1: alt_sld_fab_alt_sld_fab_splitter File: D:/FBGA project/Veron/I2C/db/ip/sldcf34fab3/submodules/alt_sld_fab_alt_sld_fab_splitter.sv Line: 3
 Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Info (286031): Timing-Driven Synthesis is running on partition "Top"
-Info (17049): 6 registers lost all their fanouts during netlist optimizations.
+Info (17049): 7 registers lost all their fanouts during netlist optimizations.
 Info (35024): Successfully connected in-system debug instance "auto_signaltap_0" to all 555 required data inputs, trigger inputs, acquisition clocks, and dynamic pins
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 5044 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 5055 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 5 input pins
     Info (21059): Implemented 70 output pins
     Info (21060): Implemented 2 bidirectional pins
-    Info (21061): Implemented 4705 logic cells
+    Info (21061): Implemented 4716 logic cells
     Info (21064): Implemented 261 RAM segments
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 30 warnings
     Info: Peak virtual memory: 4926 megabytes
-    Info: Processing ended: Wed Jul 30 22:59:53 2025
-    Info: Elapsed time: 00:00:23
+    Info: Processing ended: Wed Jul 30 23:18:33 2025
+    Info: Elapsed time: 00:00:25
     Info: Total CPU time (on all processors): 00:00:41
 
 

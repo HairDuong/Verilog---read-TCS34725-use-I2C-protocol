@@ -1,24 +1,5 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company:  www.circuitden.com
-// Engineer: Artin Isagholian
-//           artinisagholian@gmail.com
-// 
-// Create Date: 01/20/2021 05:47:22 PM
-// Design Name: 
-// Module Name: i2c_master
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: cycle_timer.sv
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
+
 module i2c_controller#(
     parameter integer unsigned NUMBER_OF_DATA_BYTES         = 1,
     parameter integer unsigned NUMBER_OF_REGISTER_BYTES     = 1,
@@ -43,31 +24,7 @@ module i2c_controller#(
 );
 
 
- /*INSTANTATION TEMPLATE
-i2c_master #(
-    .NUMBER_OF_DATA_BYTES           (1),
-    .NUMBER_OF_REGISTER_BYTES       (1),
-    .ADDRESS_WIDTH                  (7),
-    .CHECK_FOR_CLOCK_STRETCHING     (1),
-    .CLOCK_STRETCHING_MAX_COUNT     ('hFF)
-)
-i2c_master_inst(
-    .clock                  (),
-    .reset_n                (),
-    .enable                 (),
-    .read_write             (),
-    .mosi_data              (),
-    .register_address       (),
-    .device_address         (),
-    .divider                (),
 
-    .miso_data              (),
-    .busy                   (),
-
-    .external_serial_data   (),
-    .external_serial_clock  ()
-);
-*/
 
 localparam DATA_WIDTH                   = (NUMBER_OF_DATA_BYTES != 0) ? (NUMBER_OF_DATA_BYTES * 8) : 8;
 localparam REGISTER_WIDTH               = (NUMBER_OF_REGISTER_BYTES != 0) ? (NUMBER_OF_REGISTER_BYTES * 8) : 8;

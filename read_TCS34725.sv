@@ -34,11 +34,12 @@ module read_TCS34725 (
     reg [7:0] blue_l, blue_h;
 
     // FSM states
-    typedef enum logic [3:0] {
+    typedef enum logic [4:0] {
         S_IDLE,
         S_WRITE_ENABLE,
         S_WAIT_PON,
         S_WRITE_ATIME,
+		  S_WRITE_GAIN,
         S_WAIT_INTEGRATION,
         S_READ_CLEAR_L,
         S_READ_CLEAR_H,
@@ -148,7 +149,18 @@ module read_TCS34725 (
                     end
                 end
                 
-                S_WRITE_ATIME: begin
+                                S_WRITE_ATIME: begin
+                    if (!busy && !enable) begin
+                        // Set gain to 16x (0x02 to register 0x0F)
+                        register_address <= 8'h8F; // CONTROL reg (0x0F + 0x80)
+                        mosi_data <= 8'h02;       // AGAIN = 16x
+                        read_write <= 0;
+                        enable <= 1;
+                        state <= S_WRITE_GAIN;
+                    end
+                end
+
+                S_WRITE_GAIN: begin
                     if (!busy && !enable) begin
                         delay_counter <= 24'd28_800; // Wait integration time
                         state <= S_WAIT_INTEGRATION;
