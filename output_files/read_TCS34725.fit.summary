@@ -1,14 +1,14 @@
-Fitter Status : Successful - Wed Jul 30 23:18:46 2025
+Fitter Status : Successful - Fri Aug  1 00:10:11 2025
 Quartus Prime Version : 21.1.0 Build 842 10/21/2021 SJ Lite Edition
 Revision Name : read_TCS34725
 Top-level Entity Name : read_TCS34725
 Family : Cyclone 10 LP
 Device : 10CL025YU256C8G
 Timing Models : Final
-Total logic elements : 4,415 / 24,624 ( 18 % )
-    Total combinational functions : 1,822 / 24,624 ( 7 % )
-    Dedicated logic registers : 3,819 / 24,624 ( 16 % )
-Total registers : 3819
+Total logic elements : 4,405 / 24,624 ( 18 % )
+    Total combinational functions : 1,812 / 24,624 ( 7 % )
+    Dedicated logic registers : 3,817 / 24,624 ( 16 % )
+Total registers : 3817
 Total pins : 73 / 151 ( 48 % )
 Total virtual pins : 0
 Total memory bits : 267,264 / 608,256 ( 44 % )
